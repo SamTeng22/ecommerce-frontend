@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class Api {
+export class ApiService {
   private baseUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) {}
@@ -31,7 +31,7 @@ export class Api {
   }
 
   addToCart(productId: number, quantity: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/cart/items`, {headers: this.authHeaders()})
+    return this.http.post(`${this.baseUrl}/cart/items`, {productId, quantity}, {headers: this.authHeaders()})
   }
 
   removeFromCart(cartItemId: number): Observable<any> {
@@ -39,11 +39,37 @@ export class Api {
   }
 
   checkout(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/orders/checkout`, {headers: this.authHeaders()})
+    return this.http.post(`${this.baseUrl}/orders/checkout`, {}, {headers: this.authHeaders()})
   }
 
   getOrders(): Observable<any> {
     return this.http.get(`${this.baseUrl}/orders`, {headers: this.authHeaders()})
+  }
+
+  getCategories(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/categories`);
+  }
+
+  //Admin - Products
+  createProduct(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/products`, data, {headers: this.authHeaders() });
+  }
+
+  updateProduct(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/products/${id}`, data, {headers: this.authHeaders() });
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/products/${id}`, {headers: this.authHeaders() });
+  }
+
+  //Admin - Orders
+  getAllOrders(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/orders/all`, {headers: this.authHeaders() });
+  }
+
+  updateOrderStatus(orderId: number, status: string): Observable<any> {
+    return this.http.put(`${this.baseUrl}/orders/${orderId}/status`, { status }, { headers: this.authHeaders() });
   }
 
   private authHeaders(): HttpHeaders {

@@ -1,1 +1,43 @@
-<p>orders works!</p>
+<div class="orders-page">
+  <h2>Your Orders</h2>
+
+  @if (loading) {
+    <p>Loading orders...</p>
+  }
+
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+
+  @if (orders.length === 0 && !loading) {
+    <div class="empty-orders">
+      <p>You haven't placed any orders yet.</p>
+    </div>
+  }
+
+  @for (order of orders; track order.id) {
+    <div class="order-card">
+      <div class="order-header">
+        <span class="order-id">Order #{{ order.id }}</span>
+        <span class="order-status status-{{ order.status.toLowerCase() }}">
+          {{ order.status }}
+        </span>
+        <span class="order-date">{{ order.createdAt | date:'mediumDate' }}</span>
+      </div>
+
+      <div class="order-items">
+        @for (item of order.items; track item.id) {
+          <div class="order-item">
+            <span>{{ item.productName }}</span>
+            <span>× {{ item.quantity }}</span>
+            <span>${{ item.subtotal }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="order-footer">
+        <span class="order-total">Total: ${{ order.totalPrice }}</span>
+      </div>
+    </div>
+  }
+</div>

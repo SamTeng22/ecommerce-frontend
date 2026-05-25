@@ -1,0 +1,41 @@
+<div class="admin-dashboard">
+  <h1>Admin Dashboard</h1>
+  <p class="subtitle">Manage your store</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📦</div>
+      <div class="stat-info">
+        <span class="stat-number">{{ totalProducts }}</span>
+        <span class="stat-label">Total Products</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🧾</div>
+      <div class="stat-info">
+        <span class="stat-number">{{ totalOrders }}</span>
+        <span class="stat-label">Total Orders</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⏳</div>
+      <div class="stat-info">
+        <span class="stat-number">{{ pendingOrders }}</span>
+        <span class="stat-label">Pending Orders</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-nav">
+    <a routerLink="/admin/products" class="admin-nav-card">
+      <span class="nav-icon">🛍️</span>
+      <h3>Manage Products</h3>
+      <p>Add, edit, or delete products</p>
+    </a>
+    <a routerLink="/admin/orders" class="admin-nav-card">
+      <span class="nav-icon">📋</span>
+      <h3>Manage Orders</h3>
+      <p>View and update order statuses</p>
+    </a>
+  </div>
+</div>

@@ -1,1 +1,19 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/">Ecommerce</a>
+  </div>
+  <div class="navbar-links">
+    <a routerLink="/products">Products</a>
+    @if (authService.isLoggedIn()) {
+      <a routerLink="/cart">Cart</a>
+      <a routerLink="/orders">Orders</a>
+      @if (authService.isAdmin()) {
+        <a routerLink="/admin" class="admin-link">Admin</a>
+      }
+      <button (click)="logout()">Logout</button>
+    } @else {
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    }
+  </div>
+</nav>

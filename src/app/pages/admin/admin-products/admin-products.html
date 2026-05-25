@@ -1,0 +1,83 @@
+<div class="admin-products">
+  <div class="page-header">
+    <h2>Manage Products</h2>
+    <button class="btn-primary" (click)="openCreateForm()">+ Add Product</button>
+  </div>
+
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+
+  @if (showForm) {
+    <div class="form-card">
+      <h3>{{ editingProduct ? 'Edit Product' : 'New Product' }}</h3>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="form.name" placeholder="Product name" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea [(ngModel)]="form.description" placeholder="Product description"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" [(ngModel)]="form.price" placeholder="0.00" />
+        </div>
+        <div class="form-group">
+          <label>Stock</label>
+          <input type="number" [(ngModel)]="form.stock" placeholder="0" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select [(ngModel)]="form.categoryId">
+          <option [ngValue]="null">Select category</option>
+          @for (cat of categories; track cat.id) {
+            <option [ngValue]="cat.id">{{ cat.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-actions">
+        <button class="btn-primary" (click)="saveProduct()">
+          {{ editingProduct ? 'Update' : 'Create' }}
+        </button>
+        <button class="btn-cancel" (click)="cancelForm()">Cancel</button>
+      </div>
+    </div>
+  }
+
+  @if (loading) {
+    <p>Loading products...</p>
+  }
+
+  <div class="products-table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products; track product.id) {
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.categoryName }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td class="actions">
+              <button class="btn-edit" (click)="openEditForm(product)">Edit</button>
+              <button class="btn-delete" (click)="deleteProduct(product.id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

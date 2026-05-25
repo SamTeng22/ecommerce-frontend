@@ -1,0 +1,79 @@
+.admin-orders {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.orders-table {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #e0e0e0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead { background: #f8f8f8; }
+
+th {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+td {
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover { background: #fafafa; }
+
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-pending { background: #fff3cd; color: #856404; }
+.status-processing { background: #cce5ff; color: #004085; }
+.status-shipped { background: #d4edda; color: #155724; }
+.status-delivered { background: #d1ecf1; color: #0c5460; }
+
+select {
+  padding: 0.4rem 0.6rem;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+}
+
+select:focus { border-color: #4caf50; }
+
+.message {
+  padding: 0.75rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}

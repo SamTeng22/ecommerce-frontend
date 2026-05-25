@@ -1,1 +1,110 @@
-<p>home works!</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">New Arrivals Available</span>
+    <h1>Shop Smarter,<br />Live Better</h1>
+    <p>Discover thousands of products at unbeatable prices, delivered right to your door.</p>
+    <div class="hero-actions">
+      <a routerLink="/products" class="btn btn-primary">Shop Now</a>
+      <a routerLink="/categories" class="btn btn-outline">Browse Categories</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-placeholder">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+        <rect width="400" height="300" rx="16" fill="#e8f5e9"/>
+        <rect x="80" y="60" width="240" height="180" rx="12" fill="#c8e6c9"/>
+        <rect x="110" y="90" width="80" height="80" rx="8" fill="#4caf50" opacity="0.6"/>
+        <rect x="210" y="90" width="80" height="80" rx="8" fill="#2e7d32" opacity="0.5"/>
+        <rect x="110" y="185" width="180" height="16" rx="4" fill="#a5d6a7"/>
+        <rect x="140" y="210" width="120" height="12" rx="4" fill="#a5d6a7" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="trust-bar">
+  <div class="trust-item">
+    <span class="trust-icon">🚚</span>
+    <div>
+      <strong>Free Shipping</strong>
+      <p>On orders over ₱500</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">🔒</span>
+    <div>
+      <strong>Secure Checkout</strong>
+      <p>100% protected payments</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">↩️</span>
+    <div>
+      <strong>Easy Returns</strong>
+      <p>30-day return policy</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">💬</span>
+    <div>
+      <strong>24/7 Support</strong>
+      <p>We're always here to help</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CATEGORIES -->
+<section class="section categories-section">
+  <div class="section-header">
+    <h2>Shop by Category</h2>
+    <a routerLink="/categories" class="see-all">See All →</a>
+  </div>
+  <div class="categories-grid">
+    @for (cat of categories; track cat.id) {
+      <a routerLink="/products" class="category-card">
+        <div class="category-icon">{{ cat.icon }}</div>
+        <span>{{ cat.name }}</span>
+      </a>
+    }
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section products-section">
+  <div class="section-header">
+    <h2>Featured Products</h2>
+    <a routerLink="/products" class="see-all">See All →</a>
+  </div>
+  @if (loading) {
+    <p>Loading...</p>
+  }
+  <div class="products-grid">
+    @for (product of featuredProducts; track product.id) {
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-img-placeholder">🛍️</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">{{ product.categoryName }}</p>
+          <h3 class="product-name">{{ product.name }}</h3>
+          <div class="product-footer">
+            <span class="product-price">₱{{ product.price.toFixed(2) }}</span>
+            <a [routerLink]="['/products', product.id]" class="btn-add-cart">View</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<section class="promo-banner">
+  <div class="promo-content">
+    <p class="promo-label">Limited Time Offer</p>
+    <h2>Get 20% Off Your First Order</h2>
+    <p>Use code <strong>WELCOME20</strong> at checkout. New customers only.</p>
+    <a routerLink="/products" class="btn btn-white">Claim Offer</a>
+  </div>
+</section>
