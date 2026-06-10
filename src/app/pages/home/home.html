@@ -1,110 +1,206 @@
+<!-- PROMO STRIP -->
+<div class="promo-strip">
+  <div class="promo-marquee">
+    <span>Free shipping on orders over $75 <span class="promo-dot">✦</span></span>
+    <span>New arrivals every Thursday <span class="promo-dot">✦</span></span>
+    <span>Members save up to 20% <span class="promo-dot">✦</span></span>
+    <span>Easy 30-day returns <span class="promo-dot">✦</span></span>
+    <span>Free shipping on orders over $75 <span class="promo-dot">✦</span></span>
+    <span>New arrivals every Thursday <span class="promo-dot">✦</span></span>
+    <span>Members save up to 20% <span class="promo-dot">✦</span></span>
+    <span>Easy 30-day returns <span class="promo-dot">✦</span></span>
+    <span>Free shipping on orders over $75 <span class="promo-dot">✦</span></span>
+    <span>New arrivals every Thursday <span class="promo-dot">✦</span></span>
+    <span>Members save up to 20% <span class="promo-dot">✦</span></span>
+    <span>Easy 30-day returns <span class="promo-dot">✦</span></span>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <span class="hero-badge">New Arrivals Available</span>
-    <h1>Shop Smarter,<br />Live Better</h1>
-    <p>Discover thousands of products at unbeatable prices, delivered right to your door.</p>
+  <div class="hero-copy">
+    <span class="hero-eyebrow">Summer Collection 2026</span>
+    <h1 class="hero-title">
+      Dressed for<br />
+      <em>Every Moment</em>
+    </h1>
+    <p class="hero-desc">
+      Curated pieces that move with you — from quiet mornings to city evenings.
+      New arrivals every Thursday.
+    </p>
     <div class="hero-actions">
-      <a routerLink="/products" class="btn btn-primary">Shop Now</a>
-      <a routerLink="/categories" class="btn btn-outline">Browse Categories</a>
+      <a routerLink="/products" class="btn-primary">Shop Now →</a>
+      <a routerLink="/products" class="btn-ghost">Lookbook</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <p class="trust-label">Free shipping</p>
+        <p class="trust-sub">On orders over $75</p>
+      </div>
+      <div class="trust-item">
+        <p class="trust-label">Easy returns</p>
+        <p class="trust-sub">30-day policy</p>
+      </div>
+      <div class="trust-item">
+        <p class="trust-label">Members save</p>
+        <p class="trust-sub">Up to 20% off</p>
+      </div>
     </div>
   </div>
   <div class="hero-image">
-    <div class="hero-image-placeholder">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
-        <rect width="400" height="300" rx="16" fill="#e8f5e9"/>
-        <rect x="80" y="60" width="240" height="180" rx="12" fill="#c8e6c9"/>
-        <rect x="110" y="90" width="80" height="80" rx="8" fill="#4caf50" opacity="0.6"/>
-        <rect x="210" y="90" width="80" height="80" rx="8" fill="#2e7d32" opacity="0.5"/>
-        <rect x="110" y="185" width="180" height="16" rx="4" fill="#a5d6a7"/>
-        <rect x="140" y="210" width="120" height="12" rx="4" fill="#a5d6a7" opacity="0.6"/>
-      </svg>
+    <img
+      src="https://images.unsplash.com/photo-1591348278900-019a8a2a8b1d?w=1200&h=1400&fit=crop&auto=format"
+      alt="Summer collection hero"
+      class="hero-img"
+    />
+    <div class="hero-img-overlay"></div>
+    <div class="hero-float-badge">
+      <p class="float-badge-eyebrow">Just dropped</p>
+      <p class="float-badge-title">The Bordeaux Edit</p>
+      <p class="float-badge-price">From $189</p>
     </div>
   </div>
 </section>
 
-<!-- TRUST BADGES -->
-<section class="trust-bar">
-  <div class="trust-item">
-    <span class="trust-icon">🚚</span>
-    <div>
-      <strong>Free Shipping</strong>
-      <p>On orders over ₱500</p>
-    </div>
-  </div>
-  <div class="trust-item">
-    <span class="trust-icon">🔒</span>
-    <div>
-      <strong>Secure Checkout</strong>
-      <p>100% protected payments</p>
-    </div>
-  </div>
-  <div class="trust-item">
-    <span class="trust-icon">↩️</span>
-    <div>
-      <strong>Easy Returns</strong>
-      <p>30-day return policy</p>
-    </div>
-  </div>
-  <div class="trust-item">
-    <span class="trust-icon">💬</span>
-    <div>
-      <strong>24/7 Support</strong>
-      <p>We're always here to help</p>
-    </div>
-  </div>
-</section>
+<!-- QUOTE STRIP -->
+<div class="quote-strip">
+  <p class="quote-text">"Style is a way to say who you are without having to speak."</p>
+  <p class="quote-author">— Rachel Zoe</p>
+</div>
 
-<!-- FEATURED CATEGORIES -->
-<section class="section categories-section">
+<!-- SHOP BY CATEGORY -->
+<section class="categories-section">
   <div class="section-header">
-    <h2>Shop by Category</h2>
-    <a routerLink="/categories" class="see-all">See All →</a>
+    <div>
+      <span class="section-eyebrow">Browse</span>
+      <h2 class="section-title">Shop by Category</h2>
+    </div>
+    <a routerLink="/products" class="see-all-link">All categories →</a>
   </div>
   <div class="categories-grid">
-    @for (cat of categories; track cat.id) {
-      <a routerLink="/products" class="category-card">
-        <div class="category-icon">{{ cat.icon }}</div>
-        <span>{{ cat.name }}</span>
+    @for (cat of staticCategories; track cat.id; let i = $index) {
+      <a routerLink="/products" class="category-tile" [class.category-tile--large]="i === 0">
+        <img [src]="cat.image" [alt]="cat.name" class="category-img" />
+        <div class="category-overlay"></div>
+        <div class="category-info">
+          <p class="category-count">{{ cat.count }}</p>
+          <h3 class="category-name">{{ cat.name }}</h3>
+          <p class="category-desc">{{ cat.description }} →</p>
+        </div>
       </a>
     }
   </div>
 </section>
 
+<div class="section-rule">
+  <div class="section-rule-inner"></div>
+</div>
+
 <!-- FEATURED PRODUCTS -->
-<section class="section products-section">
-  <div class="section-header">
-    <h2>Featured Products</h2>
-    <a routerLink="/products" class="see-all">See All →</a>
+<section class="products-section">
+  <div class="products-header">
+    <div>
+      <span class="section-eyebrow">Handpicked</span>
+      <h2 class="section-title">Featured Products</h2>
+    </div>
+    <div class="filter-pills">
+      @for (f of filters; track f) {
+        <button
+          class="filter-pill"
+          [class.filter-pill--active]="selectedFilter === f"
+          (click)="setFilter(f)"
+        >{{ f }}</button>
+      }
+    </div>
   </div>
+
   @if (loading) {
-    <p>Loading...</p>
+    <p class="loading-text">Loading...</p>
   }
+
   <div class="products-grid">
-    @for (product of featuredProducts; track product.id) {
+    @for (product of filteredProducts; track product.id) {
       <div class="product-card">
-        <div class="product-image">
+        <div class="product-img-wrap">
           <div class="product-img-placeholder">🛍️</div>
-        </div>
-        <div class="product-info">
-          <p class="product-category">{{ product.categoryName }}</p>
-          <h3 class="product-name">{{ product.name }}</h3>
-          <div class="product-footer">
-            <span class="product-price">₱{{ product.price.toFixed(2) }}</span>
-            <a [routerLink]="['/products', product.id]" class="btn-add-cart">View</a>
+          <div class="product-quick-add">
+            <a [routerLink]="['/products', product.id]">Quick View</a>
           </div>
+        </div>
+        <div class="product-meta">
+          <p class="product-cat">{{ product.categoryName }}</p>
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-price">₱{{ product.price.toFixed(2) }}</p>
         </div>
       </div>
     }
   </div>
-</section>
 
-<!-- PROMO BANNER -->
-<section class="promo-banner">
-  <div class="promo-content">
-    <p class="promo-label">Limited Time Offer</p>
-    <h2>Get 20% Off Your First Order</h2>
-    <p>Use code <strong>WELCOME20</strong> at checkout. New customers only.</p>
-    <a routerLink="/products" class="btn btn-white">Claim Offer</a>
+  <div class="view-all-wrap">
+    <a routerLink="/products" class="btn-view-all">View All Products</a>
   </div>
 </section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-section">
+  <div class="newsletter-inner">
+    <span class="section-eyebrow newsletter-eyebrow">Stay in the loop</span>
+    <h2 class="newsletter-title">Join the Suki Circle</h2>
+    <p class="newsletter-desc">
+      Early access to new arrivals, member-only discounts, and curated style guides.
+    </p>
+    <form class="newsletter-form" (submit)="$event.preventDefault()">
+      <input type="email" placeholder="your@email.com" class="newsletter-input" />
+      <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-logo">SUKI</p>
+      <p class="footer-tagline">Curated goods for the considered life. Est. 2018 in New York.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Shop</p>
+      <ul>
+        <li><a routerLink="/products">New In</a></li>
+        <li><a routerLink="/products">Women</a></li>
+        <li><a routerLink="/products">Men</a></li>
+        <li><a routerLink="/products">Home & Living</a></li>
+        <li><a routerLink="/products">Beauty</a></li>
+        <li><a routerLink="/products">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Help</p>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Track Your Order</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Company</p>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Affiliates</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Suki. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
