@@ -14,6 +14,7 @@ import { Cart as CartModel } from '../../models/cart.model';
 export class Cart implements OnInit {
   cart: CartModel | null = null;
   message = '';
+  isError = false;
   loading = false;
   checkingOut = false;
 
@@ -37,8 +38,9 @@ export class Cart implements OnInit {
       },
       error: () => {
         this.message = 'Failed to load cart';
+        this.isError = true;
         this.loading = false;
-        this.cdr.detectChanges;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -51,6 +53,7 @@ export class Cart implements OnInit {
       },
       error: () => {
         this.message = 'Failed to remove item';
+        this.isError = true;
         this.cdr.detectChanges();
       }
     });
@@ -61,12 +64,14 @@ export class Cart implements OnInit {
     this.apiService.checkout().subscribe({
       next: () => {
         this.message = 'Order placed successfully!';
+        this.isError = false;
         this.checkingOut = false;
         this.cdr.detectChanges();
         setTimeout(() => this.router.navigate(['/orders']), 1500);
       },
       error: () => {
         this.message = 'Checkout failed. Please try again.';
+        this.isError = true;
         this.checkingOut = false;
         this.cdr.detectChanges();
       }

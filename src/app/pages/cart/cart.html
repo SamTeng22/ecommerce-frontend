@@ -1,48 +1,90 @@
 <div class="cart-page">
-  <h2>Your Cart</h2>
 
-  @if (message) {
-    <p class="message">{{ message }}</p>
-  }
+  <!-- Header -->
+  <div class="cart-header">
+    <span class="cart-eyebrow">Shopping Bag</span>
+    <h1 class="cart-title">Your Selection</h1>
+    @if (cart && cart.items.length > 0) {
+      <p class="cart-count">
+        {{ cart.items.length }} {{ cart.items.length === 1 ? 'item' : 'items' }}
+      </p>
+    }
+  </div>
 
   @if (loading) {
-    <p>Loading cart...</p>
+    <div class="cart-loading">
+      <p>Loading your bag...</p>
+    </div>
   }
 
-  @if (cart) {
+  @if (!loading && cart) {
     @if (cart.items.length === 0) {
-      <div class="empty-cart">
-        <p>Your cart is empty.</p>
-        <a routerLink="/products">Browse Products</a>
+      <div class="cart-empty">
+        <p class="empty-title">Your bag is empty</p>
+        <a class="empty-browse-link" routerLink="/products">Browse the Collection</a>
       </div>
     } @else {
-      <div class="cart-items">
-        @for (item of cart.items; track item.id) {
-          <div class="cart-item">
-            <div class="item-info">
-              <h3>{{ item.productName }}</h3>
-              <p>${{ item.productPrice }} × {{ item.quantity }}</p>
+      <div class="cart-content">
+
+        <!-- Items list -->
+        <div class="cart-items">
+          @if (message) {
+            <p class="cart-message" [class.error]="isError">{{ message }}</p>
+          }
+          @for (item of cart.items; track item.id) {
+            <div class="cart-item">
+              <div class="cart-item-image">
+                <span class="item-monogram">{{ item.productName.charAt(0) }}</span>
+              </div>
+              <div class="cart-item-details">
+                <h3 class="item-name">{{ item.productName }}</h3>
+                <p class="item-price">${{ item.productPrice }} &times; {{ item.quantity }}</p>
+              </div>
+              <div class="cart-item-right">
+                <span class="item-subtotal">${{ item.subtotal }}</span>
+                <button class="item-remove-btn" (click)="removeItem(item.id)" title="Remove">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div class="item-actions">
-              <span class="subtotal">${{ item.subtotal }}</span>
-              <button class="remove-btn" (click)="removeItem(item.id)">Remove</button>
+          }
+        </div>
+
+        <!-- Order summary -->
+        <div class="cart-summary">
+          <h2 class="summary-title">Order Summary</h2>
+          <div class="summary-rows">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span>${{ cart.totalPrice }}</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span class="summary-free">Complimentary</span>
             </div>
           </div>
-        }
-      </div>
-
-      <div class="cart-summary">
-        <div class="total">
-          <span>Total:</span>
-          <span>${{ cart.totalPrice }}</span>
+          <div class="summary-total">
+            <span>Total</span>
+            <span>${{ cart.totalPrice }}</span>
+          </div>
+          <button class="checkout-btn" (click)="checkout()" [disabled]="checkingOut">
+            {{ checkingOut ? 'Placing Order...' : 'Place Order' }}
+          </button>
+          <a class="continue-link" routerLink="/products">Continue Shopping</a>
         </div>
-        <button
-          class="checkout-btn"
-          (click)="checkout()"
-          [disabled]="checkingOut">
-          {{ checkingOut ? 'Placing Order...' : 'Checkout' }}
-        </button>
+
       </div>
     }
   }
+
+  <!-- Failed to load -->
+  @if (!loading && !cart) {
+    <div class="cart-empty">
+      <p class="empty-title">{{ message || 'Something went wrong' }}</p>
+      <a class="empty-browse-link" routerLink="/products">Browse the Collection</a>
+    </div>
+  }
+
 </div>
