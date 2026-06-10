@@ -14,7 +14,6 @@
 }
 
 .promo-marquee span {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -50,7 +49,6 @@
 }
 
 .hero-eyebrow {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.25em;
@@ -74,7 +72,6 @@
 }
 
 .hero-desc {
-  font-family: 'Jost', sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: var(--muted-foreground);
@@ -89,19 +86,21 @@
   flex-wrap: wrap;
 }
 
-.btn-primary {
+.btn-primary, .btn-ghost, .btn-view-all {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: var(--primary);
-  color: var(--primary-foreground);
-  padding: 0.9rem 2rem;
-  font-family: 'Jost', sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.btn-primary {
+  gap: 0.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.9rem 2rem;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -111,17 +110,9 @@
 }
 
 .btn-ghost {
-  display: inline-flex;
-  align-items: center;
   border: 1px solid var(--border);
   color: var(--foreground);
   padding: 0.9rem 2rem;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-decoration: none;
   transition: border-color 0.3s;
 }
 
@@ -139,7 +130,6 @@
 }
 
 .trust-label {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.15em;
@@ -148,7 +138,6 @@
 }
 
 .trust-sub {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 300;
   color: var(--muted-foreground);
@@ -191,7 +180,6 @@
 }
 
 .float-badge-eyebrow {
-  font-family: 'Jost', sans-serif;
   font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -208,7 +196,6 @@
 }
 
 .float-badge-price {
-  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 300;
   color: var(--muted-foreground);
@@ -231,7 +218,6 @@
 }
 
 .quote-author {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -242,7 +228,6 @@
 
 /* ─── SHARED SECTION ELEMENTS ────────────────────────────── */
 .section-eyebrow {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.25em;
@@ -267,7 +252,6 @@
 }
 
 .see-all-link {
-  font-family: 'Jost', sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -337,7 +321,6 @@
 }
 
 .category-count {
-  font-family: 'Jost', sans-serif;
   font-size: 0.62rem;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -354,7 +337,6 @@
 }
 
 .category-desc {
-  font-family: 'Jost', sans-serif;
   font-size: 0.75rem;
   font-weight: 300;
   color: rgba(255,255,255,0.7);
@@ -432,7 +414,6 @@
 }
 
 .loading-text {
-  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   color: var(--muted-foreground);
   text-align: center;
@@ -490,7 +471,6 @@
 }
 
 .product-quick-add a {
-  font-family: 'Jost', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -500,7 +480,6 @@
 }
 
 .product-cat {
-  font-family: 'Jost', sans-serif;
   font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -523,7 +502,6 @@
 }
 
 .product-price {
-  font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--foreground);
@@ -535,17 +513,9 @@
 }
 
 .btn-view-all {
-  display: inline-flex;
-  align-items: center;
   border: 1px solid var(--foreground);
   color: var(--foreground);
   padding: 1rem 2.5rem;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-decoration: none;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -554,197 +524,12 @@
   color: var(--primary-foreground);
 }
 
-/* ─── NEWSLETTER ─────────────────────────────────────────── */
-.newsletter-section {
-  background: var(--accent);
-  padding: 5rem 1.5rem;
-}
-
-.newsletter-inner {
-  max-width: 32rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.newsletter-eyebrow {
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 0.75rem;
-}
-
-.newsletter-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 1rem;
-}
-
-.newsletter-desc {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 300;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.newsletter-form {
-  display: flex;
-  max-width: 24rem;
-  margin: 0 auto;
-}
-
-.newsletter-input {
-  flex: 1;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: #fff;
-  padding: 0.85rem 1rem;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 300;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.newsletter-input::placeholder {
-  color: rgba(255,255,255,0.5);
-}
-
-.newsletter-input:focus {
-  border-color: rgba(255,255,255,0.7);
-}
-
-.newsletter-btn {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border: none;
-  padding: 0.85rem 1.4rem;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: opacity 0.2s;
-}
-
-.newsletter-btn:hover {
-  opacity: 0.85;
-}
-
-/* ─── FOOTER ─────────────────────────────────────────────── */
-.footer {
-  background: var(--primary);
-  color: var(--primary-foreground);
-}
-
-.footer-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem 6rem;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-}
-
-.footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-}
-
-.footer-tagline {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: rgba(247, 243, 238, 0.55);
-  line-height: 1.6;
-  max-width: 16rem;
-}
-
-.footer-col-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(247, 243, 238, 0.45);
-  margin-bottom: 1rem;
-}
-
-.footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.footer-col ul a {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 300;
-  color: rgba(247, 243, 238, 0.65);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-col ul a:hover {
-  color: var(--primary-foreground);
-}
-
-.footer-bottom {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.25rem 6rem;
-  border-top: 1px solid rgba(247, 243, 238, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-copy {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(247, 243, 238, 0.35);
-}
-
-.footer-legal {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footer-legal a {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(247, 243, 238, 0.35);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-legal a:hover {
-  color: rgba(247, 243, 238, 0.65);
-}
-
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .hero-copy { padding: 4rem 3rem; }
   .categories-section,
   .products-section,
   .section-rule { padding-left: 3rem; padding-right: 3rem; }
-  .footer-inner,
-  .footer-bottom { padding-left: 3rem; padding-right: 3rem; }
 }
 
 @media (max-width: 768px) {
@@ -775,14 +560,4 @@
   }
   .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .see-all-link { display: none; }
-  .footer-inner {
-    grid-template-columns: 1fr 1fr;
-    padding: 3rem 1.5rem;
-  }
-  .footer-brand { grid-column: span 2; }
-  .footer-bottom {
-    padding: 1.25rem 1.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
