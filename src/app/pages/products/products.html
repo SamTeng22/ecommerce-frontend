@@ -210,7 +210,7 @@
                 <h3 class="product-name">{{ product.name }}</h3>
                 <p class="product-description">{{ product.description }}</p>
                 <div class="product-price-row">
-                  <span class="product-price">${{ product.price }}</span>
+                  <span class="product-price">₱{{ product.price }}</span>
                   @if (product.stock > 0 && product.stock <= 3) {
                     <span class="product-stock-note">Only {{ product.stock }} left</span>
                   }

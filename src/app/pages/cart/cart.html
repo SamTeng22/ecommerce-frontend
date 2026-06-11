@@ -38,10 +38,10 @@
               </div>
               <div class="cart-item-details">
                 <h3 class="item-name">{{ item.productName }}</h3>
-                <p class="item-price">${{ item.productPrice }} &times; {{ item.quantity }}</p>
+                <p class="item-price">₱{{ item.productPrice }} &times; {{ item.quantity }}</p>
               </div>
               <div class="cart-item-right">
-                <span class="item-subtotal">${{ item.subtotal }}</span>
+                <span class="item-subtotal">₱{{ item.subtotal }}</span>
                 <button class="item-remove-btn" (click)="removeItem(item.id)" title="Remove">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
@@ -58,7 +58,7 @@
           <div class="summary-rows">
             <div class="summary-row">
               <span>Subtotal</span>
-              <span>${{ cart.totalPrice }}</span>
+              <span>₱{{ cart.totalPrice }}</span>
             </div>
             <div class="summary-row">
               <span>Shipping</span>
@@ -67,7 +67,7 @@
           </div>
           <div class="summary-total">
             <span>Total</span>
-            <span>${{ cart.totalPrice }}</span>
+            <span>₱{{ cart.totalPrice }}</span>
           </div>
           <button class="checkout-btn" (click)="checkout()" [disabled]="checkingOut">
             {{ checkingOut ? 'Placing Order...' : 'Place Order' }}

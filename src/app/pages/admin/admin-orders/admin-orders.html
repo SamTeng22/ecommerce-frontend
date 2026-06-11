@@ -29,7 +29,7 @@
             <td>#{{ order.id }}</td>
             <td>{{ order.createdAt | date:'mediumDate' }}</td>
             <td>{{ order.items.length }} item(s)</td>
-            <td>${{ order.totalPrice }}</td>
+            <td>₱{{ order.totalPrice }}</td>
             <td>
               <span class="status-badge status-{{ order.status.toLowerCase() }}">
                 {{ order.status }}
