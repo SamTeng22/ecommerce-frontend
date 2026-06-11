@@ -12,9 +12,12 @@ import { Product, ProductPage } from '../../models/product.model';
 })
 export class Products implements OnInit {
   allProducts: Product[] = [];
+  allProductsCache: Product[] | null = null;
+  allCategories: string[] = [];
   currentPage = 0;
   totalPages = 0;
   loading = false;
+  filterLoading = false;
   hasMore = false;
 
   selectedCategories: string[] = [];
@@ -44,6 +47,39 @@ export class Products implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
+    this.loadCategories();
+  }
+
+  loadCategories(): void {
+    this.apiService.getCategories().subscribe({
+      next: (cats: any[]) => {
+        this.allCategories = cats.map((c: any) => c.name ?? c).sort();
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
+  fetchAllProducts(): void {
+    this.filterLoading = true;
+    this.apiService.getProducts(0, 9999).subscribe({
+      next: (data: ProductPage) => {
+        this.allProductsCache = data.content;
+        this.filterLoading = false;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.filterLoading = false;
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
+  onFilterChange(): void {
+    if (this.isFiltered && !this.allProductsCache) {
+      this.fetchAllProducts();
+    } else {
+      this.cdr.detectChanges();
+    }
   }
 
   loadProducts(): void {
@@ -71,12 +107,20 @@ export class Products implements OnInit {
     }
   }
 
+  get isFiltered(): boolean {
+    return this.selectedCategories.length > 0 || this.selectedPriceRanges.length > 0;
+  }
+
   get categories(): string[] {
-    return Array.from(new Set(this.allProducts.map((p) => p.categoryName))).sort();
+    return this.allCategories;
   }
 
   get filteredProducts(): Product[] {
-    let results = [...this.allProducts];
+    const source = this.isFiltered && this.allProductsCache
+      ? this.allProductsCache
+      : this.allProducts;
+
+    let results = [...source];
 
     if (this.selectedCategories.length > 0) {
       results = results.filter((p) => this.selectedCategories.includes(p.categoryName));
@@ -114,6 +158,7 @@ export class Products implements OnInit {
     const idx = this.selectedCategories.indexOf(cat);
     if (idx >= 0) this.selectedCategories.splice(idx, 1);
     else this.selectedCategories.push(cat);
+    this.onFilterChange();
   }
 
   isCategorySelected(cat: string): boolean {
@@ -124,6 +169,7 @@ export class Products implements OnInit {
     const idx = this.selectedPriceRanges.indexOf(label);
     if (idx >= 0) this.selectedPriceRanges.splice(idx, 1);
     else this.selectedPriceRanges.push(label);
+    this.onFilterChange();
   }
 
   isPriceRangeSelected(label: string): boolean {
@@ -133,14 +179,17 @@ export class Products implements OnInit {
   clearAll(): void {
     this.selectedCategories = [];
     this.selectedPriceRanges = [];
+    this.cdr.detectChanges();
   }
 
   removeCategory(cat: string): void {
     this.selectedCategories = this.selectedCategories.filter((c) => c !== cat);
+    this.onFilterChange();
   }
 
   removePriceRange(label: string): void {
     this.selectedPriceRanges = this.selectedPriceRanges.filter((r) => r !== label);
+    this.onFilterChange();
   }
 
   setSort(value: string): void {

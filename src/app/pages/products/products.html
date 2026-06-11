@@ -176,11 +176,11 @@
 
     <!-- Product grid -->
     <div class="products-grid-wrapper">
-      @if (loading && allProducts.length === 0) {
+      @if ((loading && allProducts.length === 0) || filterLoading) {
         <div class="products-loading">
           <p>Loading collection...</p>
         </div>
-      } @else if (filteredProducts.length === 0 && !loading) {
+      } @else if (filteredProducts.length === 0 && !loading && !filterLoading) {
         <div class="products-empty">
           <p class="empty-title">No products match your filters</p>
           <button class="empty-clear-btn" (click)="clearAll()">Clear all filters</button>
@@ -220,7 +220,7 @@
           }
         </div>
 
-        @if (hasMore) {
+        @if (hasMore && !isFiltered) {
           <div class="load-more-wrap">
             <button class="load-more-btn" (click)="loadMore()" [disabled]="loading">
               {{ loading ? 'Loading...' : 'Load More' }}
